@@ -57,7 +57,7 @@ a,b,c:500,0,500
     虽然对于不同的机器环境而言，确切的时间单位是不同的，但是对于算法进行多少个基本操作在规模数量级上是相同的
     因此，可以忽略机器环境的影响而客观的反应算法的时间效率
     对于算法的时间效率，用“大O记法”
-    O(n^3)       100n^2     10000n^2   
+    O(n^3)       100n^2     10000n^2
     O(n^2)
 6. 时间复杂度分类
     最优时间复杂度：算法完成工作最少需要多少基本操作（过于理想化，没什么参考价值）
@@ -114,16 +114,21 @@ a,b,c:500,0,500
 my_list = [10, 40, 9, 6, 8, 100]
 
 
-def get_min(my_list):
-    for i in range(len(my_list)):
-        for j in range(len(my_list)):
-            if my_list[i] > my_list[j]:
+def getMin(source_list):
+    # 两层循环，数量级是n²
+    for i in range(len(source_list)):
+        for j in range(len(source_list)):
+            # 拿第i个数，和其他所有的数进行比较，如果遇到比自己小的，
+            # 就说明自己不是最小的，也就不用继续比下去了,break退出当前循环
+            if source_list[i] > source_list[j]:
                 break
-            else:
-                return my_list[i]
+        # 如果没有从break出口出去，就说明没有遇到比自己小的
+        # 自己就是最小的，所有要返回当前数字
+        else:
+            return source_list[i]
 
 
-print(get_min(my_list))
+print(getMin(my_list))
 
 
 def get_min2(my_list):
