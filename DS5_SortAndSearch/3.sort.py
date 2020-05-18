@@ -183,49 +183,71 @@ print(alist)
 2              [17,26, 54,93]                          [20,44,55]
 3                                             [20,31,44,55,77]
 4                       [17,20,26,31,44,54,55,77,93]
-'''
-
-
 def mergeSort(alist):
     if len(alist) > 1:
-        mid = len(alist) // 2
+        mid = len(alist)//2
         lefthalf = alist[:mid]
         righthalf = alist[mid:]
-
         mergeSort(lefthalf)
         mergeSort(righthalf)
-
         i = 0
         j = 0
         k = 0
-
         while i < len(lefthalf) and j < len(righthalf):
             if lefthalf[i] < righthalf[j]:
                 alist[k] = lefthalf[i]
-                i = i + 1
+                i = i+1
             else:
                 alist[k] = righthalf[j]
-                j = j + 1
-            k = k + 1
-
+                j = j+1
+            k = k+1
         while i < len(lefthalf):
             alist[k] = lefthalf[i]
-            i = i + 1
-            k = k + 1
-
+            i = i+1
+            k = k+1
+        
         while j < len(righthalf):
             alist[k] = righthalf[j]
-            j = j + 1
-            k = k + 1
-
-        print("归并：", alist)
-
-
-alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+            j = j+1
+            k = k+1
+        print("归并：",alist)
+alist = [54,26,93,17,77,31,44,55,20]
 mergeSort(alist)
 print(alist)
+'''
 
 '''
     六、快速排序
-    
+        选择一个值作为枢纽值，一般就是列表第一项，枢纽值作为帮助拆分的标准，
+        alist = [54,26,93,17,77,31,44,55,20]
+                [17,20,26,31,44,54,55,77,93]
+        54最终在原列表中31的位置上，这个位置叫做：拆分点
+        54     左标记 [26,93,17,77,31,44,55,20] 右标记  
+        首先增加左标记，知道找到一个大于枢纽值得值，停止，然后递减右标记，知道找到一个小于枢纽值的值，停止。
+        交换这两项
+        增加左标记
+        26 < 54
+        93 > 54  stop
+        递减右标记
+        20 < 54  stop
+        交换
+        第一次的结果  [54,26,20,17,77,31,44,55,93]
+        第二次的结果  [54,26,20,17,44,31,77,55,93]
+        第三次的结果  [31,26,20,17,44,54,77,55,93]
+        根据拆分点，拆左右两个列表
+        [31,26,20,17,44]   [77,55,93]
+        重复以上过程
+        [17,26,20,31,44]   [55,77,93]
+        [17,26,20]
+        [26,20]
+        [20,26]
 '''
+
+
+def quickSort(alist):
+    pass
+
+
+alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+quickSort(alist)
+print(alist)
